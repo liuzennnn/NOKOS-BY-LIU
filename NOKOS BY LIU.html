@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NOKOS BY LIU</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#080b14;
+    color:white;
+}
+
+/* HEADER */
+header{
+    padding:20px;
+    background:#101522;
+    position:sticky;
+    top:0;
+    z-index:10;
+    border-bottom:1px solid #222938;
+}
+
+.nav{
+    max-width:1000px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#ff4f9a;
+}
+
+.cart{
+    background:#ff4f9a;
+    padding:9px 14px;
+    border-radius:10px;
+}
+
+/* HERO */
+.hero{
+    max-width:1000px;
+    margin:auto;
+    padding:45px 20px;
+}
+
+.hero h1{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.hero h1 span{
+    color:#ff4f9a;
+}
+
+.hero p{
+    color:#929aad;
+    line-height:1.6;
+}
+
+/* FILTER */
+.filter{
+    max-width:1000px;
+    margin:auto;
+    padding:0 20px 20px;
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+}
+
+.filter button{
+    border:0;
+    padding:11px 18px;
+    border-radius:20px;
+    background:#171d2b;
+    color:white;
+    white-space:nowrap;
+    cursor:pointer;
+}
+
+.filter button.active{
+    background:#ff4f9a;
+}
+
+/* PRODUCTS */
+.products{
+    max-width:1000px;
+    margin:auto;
+    padding:10px 20px 50px;
+
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:18px;
+}
+
+.card{
+    background:#111725;
+    border:1px solid #222938;
+    border-radius:18px;
+    padding:18px;
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#ff4f9a;
+}
+
+.flag{
+    font-size:40px;
+}
+
+.country{
+    color:#8f98ad;
+    font-size:13px;
+    margin-top:5px;
+}
+
+.card h3{
+    margin-top:15px;
+}
+
+.desc{
+    color:#858ea3;
+    font-size:13px;
+    line-height:1.5;
+    margin:10px 0;
+}
+
+.status{
+    display:inline-block;
+    background:#123a2a;
+    color:#55e49a;
+    padding:5px 9px;
+    border-radius:7px;
+    font-size:11px;
+    margin-bottom:15px;
+}
+
+.price{
+    font-size:22px;
+    font-weight:bold;
+    color:#ff66a8;
+    margin-bottom:14px;
+}
+
+.order{
+    width:100%;
+    border:0;
+    padding:12px;
+    border-radius:10px;
+    background:#ff4f9a;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.order:hover{
+    background:#ff2f87;
+    transform:scale(1.02);
+}
+
+/* INFO */
+.info{
+    max-width:1000px;
+    margin:0 auto 40px;
+    padding:20px;
+}
+
+.info-box{
+    background:#111725;
+    border:1px solid #222938;
+    border-radius:18px;
+    padding:22px;
+}
+
+.info-box h2{
+    margin-bottom:10px;
+}
+
+.info-box p{
+    color:#8f98ad;
+    line-height:1.6;
+    font-size:14px;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    color:#626b80;
+    border-top:1px solid #202635;
+    font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+
+    <div class="nav">
+
+        <div class="logo">
+            NOKOS <span>STORE</span>
+        </div>
+
+        <div class="cart">
+            🛒
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- HERO -->
+<section class="hero">
+
+    <h1>
+        Katalog <span>NOKOS</span>
+    </h1>
+
+    <p>
+        Pilih produk dan negara yang tersedia.
+        Klik tombol PESAN untuk menghubungi admin melalui Telegram.
+    </p>
+
+</section>
+
+
+<!-- FILTER -->
+<div class="filter">
+
+    <button class="active" onclick="filterProduk('semua',this)">
+        Semua
+    </button>
+
+    <button onclick="filterProduk('indonesia',this)">
+        🇮🇩 Indonesia
+    </button>
+
+    <button onclick="filterProduk('malaysia',this)">
+        🇲🇾 Malaysia
+    </button>
+
+</div>
+
+
+<!-- PRODUCTS -->
+<section class="products">
+
+
+    <!-- INDONESIA BASIC -->
+    <div class="card indonesia">
+
+        <div class="flag">
+            🇮🇩
+        </div>
+
+        <div class="country">
+            INDONESIA
+        </div>
+
+        <h3>
+            Indonesia Basic
+        </h3>
+
+        <div class="desc">
+            Paket nomor virtual Indonesia.
+        </div>
+
+        <div class="status">
+            ● TERSEDIA
+        </div>
+
+        <div class="price">
+            Rp5.000
+        </div>
+
+        <button
+            class="order"
+            onclick="pesan('Indonesia Basic','10.000')">
+
+            PESAN
+
+        </button>
+
+    </div>
+
+
+    <!-- MALAYSIA BASIC -->
+    <div class="card malaysia">
+
+        <div class="flag">
+            🇲🇾
+        </div>
+
+        <div class="country">
+            MALAYSIA
+        </div>
+
+        <h3>
+            Malaysia Basic
+        </h3>
+
+        <div class="desc">
+            Paket nomor virtual Malaysia.
+        </div>
+
+        <div class="status">
+            ● TERSEDIA
+        </div>
+
+        <div class="price">
+            Rp8.000
+        </div>
+
+        <button
+            class="order"
+            onclick="pesan('Malaysia Basic','Rp20.000')">
+
+            PESAN
+
+        </button>
+
+    </div>
+
+
+</section>
+
+
+<!-- INFO -->
+<section class="info">
+
+    <div class="info-box">
+
+        <h2>
+            ℹ️ Informasi
+        </h2>
+
+        <p>
+            Ketersediaan produk dapat berubah sewaktu-waktu.
+            Silakan hubungi admin sebelum melakukan pemesanan.
+            Gunakan layanan secara legal dan sesuai ketentuan
+            platform yang digunakan.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    © 2026 NOKOS BY LIU
+    <br>
+
+    Indonesia 🇮🇩 • Malaysia 🇲🇾
+
+</footer>
+
+
+<script>
+
+/* ===================================
+   TELEGRAM ORDER
+=================================== */
+
+function pesan(produk,harga){
+
+    /*
+       GANTI USERNAME DI BAWAH
+       Contoh:
+       let username = "NokosStore";
+    */
+
+    let username = "liuzennnn";
+
+
+    let pesan =
+        "Halo Admin 👋\n\n" +
+        "Saya ingin pesan:\n" +
+        "Produk: " + produk + "\n" +
+        "Harga: " + harga + "\n\n" +
+        "Mohon info ketersediaannya.";
+
+
+    let link =
+        "https://t.me/liuzennnn" +
+        username +
+        "?text=" +
+        encodeURIComponent(pesan);
+
+
+    window.open(link,"_blank");
+
+}
+
+
+/* ===================================
+   FILTER PRODUK
+=================================== */
+
+function filterProduk(kategori,tombol){
+
+    let semuaProduk =
+        document.querySelectorAll(".card");
+
+    let tombolFilter =
+        document.querySelectorAll(".filter button");
+
+
+    /* Hapus status active */
+    tombolFilter.forEach(function(btn){
+
+        btn.classList.remove("active");
+
+    });
+
+
+    /* Aktifkan tombol yang dipilih */
+    tombol.classList.add("active");
+
+
+    /* Tampilkan produk */
+    semuaProduk.forEach(function(produk){
+
+        if(kategori === "semua"){
+
+            produk.style.display = "block";
+
+        }
+
+        else if(produk.classList.contains(kategori)){
+
+            produk.style.display = "block";
+
+        }
+
+        else{
+
+            produk.style.display = "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
